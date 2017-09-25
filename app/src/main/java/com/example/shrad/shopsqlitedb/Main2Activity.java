@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * The Main2Activity opens the Shop details form for the shop owner to be filled out.
+ * The data entered in the textfield is saved in the database table ShopDetails.
+ * The class also allows to update, delete & view the shopdetails table.
+*/
 public class Main2Activity extends AppCompatActivity {
 
     DatabaseHelper mydb;
@@ -53,6 +58,10 @@ public class Main2Activity extends AppCompatActivity {
         updateData();
     }
 
+    /**
+    *The addData() method is called when Add Shop Data button is pressed by the user. the listener onClick method is implemented
+    *in this method. If the data insert is successful, then a toast is represented saying data inserted else data not inserted.
+    */
     public void addData(){
         btnaddShopData.setOnClickListener(
                 new View.OnClickListener(){
@@ -75,6 +84,11 @@ public class Main2Activity extends AppCompatActivity {
 
     }
 
+     /**
+    *The updateData() method is called when Update Shop Data button is pressed by the user. the listener onClick method is implemented
+    *in this method & to identify the record to be updated the user needs to enter their id then only the update operation could be done.
+    *If the data updated is successful, then a toast is represented saying data updated else data not updated.
+    */
     private void updateData() {
         btnUpdateShopData.setOnClickListener(
                 new View.OnClickListener(){
@@ -96,6 +110,11 @@ public class Main2Activity extends AppCompatActivity {
         );
     }
 
+     /**
+    *The deleteData() method is called when Deleted Shop Data button is pressed by the user. the listener onClick method is implemented
+    *in this method. to identify the record to be deleted the user needs to enter their id then only the delete operation could be done.
+    *If the data delete is successful, then a toast is represented saying data deleted else data not deleted.
+    */
     private void deleteData() {
         btnDeleteShopData.setOnClickListener(
                 new View.OnClickListener(){
@@ -111,6 +130,11 @@ public class Main2Activity extends AppCompatActivity {
         );
     }
 
+     /**
+    *The viewAll() method is called when ViewAll Shop Data button is pressed by the user. the listener onClick method is implemented
+    *in this method. If data is present is not present in the database, a toast is represented saying No data found else,
+    * a alert dialog is shown up with all table data in it.
+    */
     public void viewAll() {
         btnviewAllShopData.setOnClickListener(
                 new View.OnClickListener() {
@@ -148,6 +172,10 @@ public class Main2Activity extends AppCompatActivity {
                 }
         );
     }
+    
+    /**
+    * This method shows alert dialog with all shop detail data when view all data button is pressed.
+    */
     public void showMessage(String title, String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
@@ -156,7 +184,10 @@ public class Main2Activity extends AppCompatActivity {
         builder.show();
 
     }
-
+    
+    /**
+    * this method is used to call Map location activity when addData/ViewAllData button is pressed.
+    */
     public void openLocationIntent(){
         Intent intent = new Intent(this,MapLocation.class);
         startActivity(intent);
